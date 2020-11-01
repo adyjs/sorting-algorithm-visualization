@@ -27,6 +27,7 @@ window.onload = function(){
 
 
 
+
 function algoChosen(){
 
     algo = algoSelector.value;
@@ -100,9 +101,41 @@ function allDisable(except){
     }
 }
 
+function isCountInputValid(countNum){
+    console.log(countNum);
+    if(countNum < 5 || countNum > 500){
+        return null;
+    }
+    return countNum;
+}
+
+function isMspfInputValid(mspfInput){
+    console.log(typeof mspfInput);
+    if(mspfInput < 5 || mspfInput > 1000){
+        return null;
+    }
+    return mspfInput;
+}
+
+function errDisaply(entryNum , mspfNum){
+    const errInput = document.getElementById('err');
+    if(entryNum === null || mspfNum === null){
+        errInput.textContent = 'Input Invalid';
+        return true;
+    }
+    // if(){
+    //     mspfInput.border = "red solid 1px";
+    //     return true;
+    // }
+    return false;
+}
+
 function prepareForRun(){
-    one.entryNum = countInput.value;
-    one.milliSecPerFrame = mspfInput.value;
+    one.entryNum = isCountInputValid( parseInt(countInput.value, 10) );
+    one.milliSecPerFrame = isMspfInputValid( parseInt(mspfInput.value, 10));
+    if( errDisaply(one.entryNum , one.milliSecPerFrame) ){
+        return
+    }
     one.generateElements();
     one.boxShuffle();
     one.generateBlocks();

@@ -97,8 +97,8 @@ class Visualization extends Base{
     }
 
     doneCompareColoring(entry1, entry2){
-        entry1.style.backgroundColor = '#ffe4e1';
-        entry2.style.backgroundColor = '#ffe4e1';
+        entry1.style.backgroundColor = '#00ffff';
+        entry2.style.backgroundColor = '#00ffff';
     }
 
     settledBlock(entry){
