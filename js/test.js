@@ -102,38 +102,31 @@ function allDisable(except){
 }
 
 function isCountInputValid(countNum){
-    console.log(countNum);
-    if(countNum < 5 || countNum > 500){
+    if(!countNum || countNum < 5 || countNum > 500){
         return null;
     }
     return countNum;
 }
 
 function isMspfInputValid(mspfInput){
-    console.log(typeof mspfInput);
-    if(mspfInput < 5 || mspfInput > 1000){
+    if(!mspfInput || mspfInput < 5 || mspfInput > 1000){
         return null;
     }
     return mspfInput;
 }
 
-function errDisaply(entryNum , mspfNum){
-    const errInput = document.getElementById('err');
-    if(entryNum === null || mspfNum === null){
-        errInput.textContent = 'Input Invalid';
+function inputInvalid(entryNum , mspfNum){
+    if(!entryNum || !mspfNum){
         return true;
     }
-    // if(){
-    //     mspfInput.border = "red solid 1px";
-    //     return true;
-    // }
     return false;
 }
 
 function prepareForRun(){
     one.entryNum = isCountInputValid( parseInt(countInput.value, 10) );
     one.milliSecPerFrame = isMspfInputValid( parseInt(mspfInput.value, 10));
-    if( errDisaply(one.entryNum , one.milliSecPerFrame) ){
+    if( inputInvalid(one.entryNum , one.milliSecPerFrame) ){
+        window.alert('圖形數量、ms per frame 輸入錯誤，\n請重新輸入')
         return
     }
     one.generateElements();
