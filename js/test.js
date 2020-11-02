@@ -102,7 +102,7 @@ function allDisable(except){
 }
 
 function isCountInputValid(countNum){
-    if(!countNum || countNum < 5 || countNum > 500){
+    if(!countNum || countNum < 5 || countNum > 300){
         return null;
     }
     return countNum;
