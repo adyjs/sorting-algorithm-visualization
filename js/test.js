@@ -56,6 +56,10 @@ function algoChosen(){
             one = new ShakerSort();
             classOne = ShakerSort;
         }
+        // else if(algo === 'MergeSort'){
+        //     one = new MergeSort();
+        //     classOne = MergeSort;
+        // }
 
         allEnable([goBtn])
     }
