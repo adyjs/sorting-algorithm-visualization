@@ -30,36 +30,48 @@ window.onload = function(){
 
 function algoChosen(){
 
-    algo = algoSelector.value;
-    if(algo === null || algo === 'none'){
-        clearInputDashBoard();
-        allDisable([algoSelector]);   
-    }
-    else{
-        if(algo === 'BubbleSort'){
-            one = new BubbleSort();
-            classOne = BubbleSort;
-        }
-        else if(algo === 'SelectionSort'){
-            one = new SelectionSort();
-            classOne = SelectionSort;
-        }
-        else if(algo === 'ExchangeSort'){
-            one = new ExchangeSort();
-            classOne = ExchangeSort;
-        }
-        else if(algo === 'InsertionSort'){
-            one = new InsertionSort();
-            classOne = InsertionSort;
-        }
-        else if(algo === 'ShakerSort'){
-            one = new ShakerSort();
-            classOne = ShakerSort;
-        }
+    try{
 
-        allEnable([goBtn])
-    }
+        algo = algoSelector.value;
+        if(algo === null || algo === 'none'){
+            clearInputDashBoard();
+            allDisable([algoSelector]);   
+        }
+        else{
+            if(algo === 'BubbleSort'){
+                one = new BubbleSort();
+                classOne = BubbleSort;
+            }
+            else if(algo === 'SelectionSort'){
+                one = new SelectionSort();
+                classOne = SelectionSort;
+            }
+            else if(algo === 'ExchangeSort'){
+                one = new ExchangeSort();
+                classOne = ExchangeSort;
+            }
+            else if(algo === 'InsertionSort'){
+                one = new InsertionSort();
+                classOne = InsertionSort;
+            }
+            else if(algo === 'ShakerSort'){
+                one = new ShakerSort();
+                classOne = ShakerSort;
+            }
+            else if(algo === 'OddEvenSort'){
+                one = new OddEvenSort();
+                classOne = OddEvenSort;
+            } 
+            else{
+                window.alert('演算法系統錯誤，\n請按 F5 重新整理系統，再次使用。');
+                // refresh();
+            }
     
+            allEnable([goBtn])
+        }
+    }
+    catch(e){
+    }
 }
 
 function clearInputDashBoard(){
@@ -121,7 +133,7 @@ function inputInvalid(entryNum , mspfNum){
     }
     return false;
 }
-
+ 
 function prepareForRun(){
     one.entryNum = isCountInputValid( parseInt(countInput.value, 10) );
     one.milliSecPerFrame = isMspfInputValid( parseInt(mspfInput.value, 10));
